@@ -1,40 +1,34 @@
-import axios from 'axios';
-import { useState } from 'react';
-import { Button, StyleSheet, View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import InputComponent from './input.js';
-
-
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import Connexion from './connexion.js';
 export default function Login(){
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    function handleSubmit() {
-        axios.post('http://localhost:3000/api/login', {
-            email,
-            password
-        })
-        .then(res => console.log(res.data))
-        .catch(err => console.error(err));
-    }
-
-
-    const dispatch = useDispatch();
-
     return (
         <View style={styles.container}>
-            <InputComponent textValue="Email" onChangeText={setEmail}/>
-            <InputComponent textValue="Password" onChangeText={setPassword}/>
-            <Button title="Submit" onPress={() => handleSubmit}></Button>
+            <ImageBackground source={require('../../assets/images/background1.jpg')} style ={styles.image}>
+            <Text style={styles.title}>iShare</Text>
+                <Connexion></Connexion>
+            </ImageBackground>
+            
         </View>
-        
-    );
+    )
 }
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,                  
-    justifyContent: 'center', 
-    alignItems: 'center',     
-  },
-});
+    container: {    
+        flex:1,    
+        justifyContent: 'center', 
+        backgroundColor: '#fff',  
+    },
+    image : {          
+        flex:1,    
+        justifyContent: 'center', 
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+    },
+    title : {
+        fontFamily: 'Jaro', 
+        fontSize: 64,
+        fontWeight: 500
+    }
+})

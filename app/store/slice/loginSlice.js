@@ -11,8 +11,7 @@ export const loginSlice = createSlice({
         setLogin : (state, action) => {
             state.email = action.payload.email;
             state.password = action.payload.password;
-            console.log(action.payload.email);
-            console.log(action.payload.password);
+            //appel api envoyer info email et mdp non hashe a l'api et l'api verifie si email correspond et si mdp dans la base de donnees qui est hash correspond au mdp envoye par react native hash
         },
 
         removelogin : (state, action) => {
